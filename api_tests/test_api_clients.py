@@ -1,6 +1,5 @@
 import pytest
 import requests
-from api_client.clients import GenericApiClient, GuapApiClient
 
 
 class TestGuapAPI:
@@ -26,7 +25,7 @@ class TestGuapAPI:
                 results[endpoint] = response.status_code
             except Exception:
                 results[endpoint] = "error"
-        
+
         assert isinstance(results, dict)
 
     @pytest.mark.critical

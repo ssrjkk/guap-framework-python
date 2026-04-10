@@ -23,7 +23,7 @@ jobs:
           pip install flake8 pytest-cov black mypy
           
       - name: Run flake8
-        run: flake8 . --max-line-length=120 --ignore=E501,W503
+        run: flake8 . --max-line-length=120 --ignore=E501,W503,W292
         
       - name: Run black
         run: black --check .

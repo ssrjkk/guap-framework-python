@@ -1,8 +1,8 @@
-# QA Automation Framework (Python)
+# Guap.ru Framework (Python)
 
-> Educational / Portfolio Project  
-> Фреймворк для автоматизации тестирования веб-приложения `guap.ru`.  
-> Демонстрирует навыки: API + UI-автоматизация, работа с БД, базовое нагрузочное тестирование, контейнеризация.
+Portfolio Project
+
+Фреймворк для автоматизации тестирования веб-приложения guap.ru.
 
 ---
 
@@ -127,8 +127,7 @@ docker run --rm qa-tests pytest ui_tests -v
 GitHub Actions автоматически запускает:
 1. **lint** — flake8 проверка стиля
 2. **api-tests** — API тесты
-3. **ui-tests** — UI тесты
-4. **generate-report** — Allure отчёт
+3. **ui-tests** — UI тесты (с автоскриншотами при падениях)
 
 ---
 

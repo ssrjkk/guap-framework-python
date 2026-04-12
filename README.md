@@ -75,30 +75,6 @@ allure serve allure-results
 
 ---
 
-## Пример теста
-
-```python
-# api_tests/test_api_clients.py
-def test_api_student_by_id(api_client):
-    """GET /api/students/:id - получение студента по ID"""
-    response = api_client.get("/api/students/1")
-    assert response.status_code == 200
-    data = response.json()
-    assert "id" in data or "student_id" in data
-```
-
-```python
-# ui_tests/pages/guap_page.py
-class GuapMainPage(BasePage):
-    def open_main(self):
-        self.open("https://guap.ru")
-    
-    def is_header_visible(self):
-        return self.is_visible(self.HEADER)
-```
-
----
-
 ## Стек
 
 | Технология | Зачем |
@@ -145,7 +121,29 @@ pytest -m smoke
 pytest -m regression
 pytest -m critical
 ```
+---
 
+## Пример теста
+
+```python
+# api_tests/test_api_clients.py
+def test_api_student_by_id(api_client):
+    """GET /api/students/:id - получение студента по ID"""
+    response = api_client.get("/api/students/1")
+    assert response.status_code == 200
+    data = response.json()
+    assert "id" in data or "student_id" in data
+```
+
+```python
+# ui_tests/pages/guap_page.py
+class GuapMainPage(BasePage):
+    def open_main(self):
+        self.open("https://guap.ru")
+    
+    def is_header_visible(self):
+        return self.is_visible(self.HEADER)
+```
 ### Этапы и артефакты
 
 | Этап | Триггер | Что делает | Артефакт |

@@ -146,6 +146,30 @@ pytest -m regression
 pytest -m critical
 ```
 
+### Этапы и артефакты
+
+| Этап | Триггер | Что делает | Артефакт |
+|------|---------|-----------|----------|
+| `lint` | каждый коммит | `flake8`, проверка стиля | - |
+| `test:api` | каждый PR | Запуск API-тестов с `--alluredir` | `allure-results/` |
+| `test:ui` | merge to develop | UI-тесты с автоскриншотами при падениях | `screenshots/failures/` |
+| `test:load:k6` | по тегу `@load` | Нагрузочный сценарий на 50 виртуальных пользователей | `k6-report.json` |
+| `report:allure` | после тестов | Генерация HTML-отчёта | `allure-report/` → GitHub Artifact |
+| `notify` | merge to main | Уведомление в Telegram при падении критичных тестов | - |
+
+### Как посмотреть отчёт
+
+1. Открой вкладку **Actions** в репозитории
+2. Выбери последний успешный запуск
+3. В разделе **Artifacts** скачай `allure-report`
+4. Распакуй и открой `index.html` в браузере
+
+Или локально:
+```bash
+# Сгенерировать отчёт из артефактов
+allure generate allure-results -o allure-report --clean
+allure open allure-report
+
 ---
 
 ## Контакты
